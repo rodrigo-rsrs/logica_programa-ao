@@ -12,3 +12,5 @@ const prompt = require ('prompt-sync')();
  }
 
     console.log("total dos numeros: " + soma);
+
+   
