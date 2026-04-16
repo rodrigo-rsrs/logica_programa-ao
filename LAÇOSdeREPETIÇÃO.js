@@ -1,10 +1,9 @@
-// --- VARIÁVEIS ---
+// variáveis
 let listaPedidos = []
 let menuAtivo = true
 
 let opcao
 
-// cadastro
 let codigo
 let produto
 let quantidade
@@ -12,38 +11,34 @@ let setor
 let prazo
 let prioridade
 
-// resumo
 let totalItens
 let urgentes
 
-// busca
 let termoBusca
 let achou
 
 
-// --- MENU ---
+// menu
 while (menuAtivo) {
 
     opcao = prompt(
-        "1. Cadastrar Pedido\n" +
-        "2. Listar Pedidos\n" +
-        "3. Resumo\n" +
-        "4. Buscar Pedido\n" +
-        "5. Sair"
+        "1- Cadastrar\n" +
+        "2- Listar\n" +
+        "3- Resumo\n" +
+        "4- Buscar\n" +
+        "5- Sair"
     )
 
     switch (opcao) {
 
-        // cadastro
         case "1":
 
-            codigo = prompt("Código:")
-            produto = prompt("Produto:")
-            quantidade = parseInt(prompt("Quantidade:"))
-            setor = prompt("Setor:")
-            prazo = parseInt(prompt("Prazo:"))
+            codigo = prompt("codigo")
+            produto = prompt("produto")
+            quantidade = parseInt(prompt("quantidade"))
+            setor = prompt("setor")
+            prazo = parseInt(prompt("prazo"))
 
-            // prioridade
             if (prazo <= 2) {
                 prioridade = "URGENTE"
             } else if (prazo <= 5) {
@@ -53,29 +48,27 @@ while (menuAtivo) {
             }
 
             listaPedidos.push({
-                codigo: codigo,
-                produto: produto,
-                quantidade: quantidade,
-                setor: setor,
-                prazo: prazo,
-                prioridade: prioridade
+                codigo,
+                produto,
+                quantidade,
+                setor,
+                prazo,
+                prioridade
             })
 
-            console.log("Cadastrado")
+            console.log("ok")
             break
 
 
-        // listar
         case "2":
 
             if (listaPedidos.length == 0) {
-                console.log("Vazio")
+                console.log("vazio")
             } else {
-
                 for (let i = 0; i < listaPedidos.length; i++) {
                     console.log(
-                        listaPedidos[i].codigo + " - " +
-                        listaPedidos[i].produto + " - " +
+                        listaPedidos[i].codigo + " " +
+                        listaPedidos[i].produto + " " +
                         listaPedidos[i].prioridade
                     )
                 }
@@ -84,7 +77,6 @@ while (menuAtivo) {
             break
 
 
-        // resumo
         case "3":
 
             totalItens = 0
@@ -99,17 +91,16 @@ while (menuAtivo) {
                 }
             }
 
-            console.log("Total: " + listaPedidos.length)
-            console.log("Quantidade: " + totalItens)
-            console.log("Urgentes: " + urgentes)
+            console.log("pedidos: " + listaPedidos.length)
+            console.log("qtd: " + totalItens)
+            console.log("urgentes: " + urgentes)
 
             break
 
 
-        // buscar
         case "4":
 
-            termoBusca = prompt("Código:")
+            termoBusca = prompt("codigo")
             achou = false
 
             for (let i = 0; i < listaPedidos.length; i++) {
@@ -121,21 +112,21 @@ while (menuAtivo) {
                 }
             }
 
-            if (achou == false) {
-                console.log("Não achou")
+            if (!achou) {
+                console.log("nao achou")
             }
 
             break
 
 
-        // sair
         case "5":
             menuAtivo = false
-            console.log("Saiu")
+            console.log("fim")
             break
 
+
         default:
-            console.log("Erro")
+            console.log("erro")
             break
     }
 }
