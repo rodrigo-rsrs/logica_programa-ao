@@ -21,32 +21,29 @@ let termoBusca
 let achou
 
 
-//MENU 
+// --- MENU ---
 while (menuAtivo) {
 
     opcao = prompt(
-        "--- SISTEMA DE PEDIDOS ---\n" +
         "1. Cadastrar Pedido\n" +
         "2. Listar Pedidos\n" +
-        "3. Resumo Gerencial\n" +
+        "3. Resumo\n" +
         "4. Buscar Pedido\n" +
         "5. Sair"
     )
 
-
-    // MENU/ESCOLHA
     switch (opcao) {
 
-        //CADASTRO DO PEDIDO
+        // cadastro
         case "1":
 
             codigo = prompt("Código:")
             produto = prompt("Produto:")
             quantidade = parseInt(prompt("Quantidade:"))
             setor = prompt("Setor:")
-            prazo = parseInt(prompt("Prazo (dias):"))
+            prazo = parseInt(prompt("Prazo:"))
 
-            // VALIDAÇÃO / PRIORIDADE
+            // prioridade
             if (prazo <= 2) {
                 prioridade = "URGENTE"
             } else if (prazo <= 5) {
@@ -55,36 +52,31 @@ while (menuAtivo) {
                 prioridade = "NORMAL"
             }
 
-            //SALVAMENTO DE DADOS
             listaPedidos.push({
-                codigo,
-                produto,
-                quantidade,
-                setor,
-                prazo,
-                prioridade
+                codigo: codigo,
+                produto: produto,
+                quantidade: quantidade,
+                setor: setor,
+                prazo: prazo,
+                prioridade: prioridade
             })
 
-            console.log("Pedido cadastrado!")
+            console.log("Cadastrado")
             break
 
 
-        //LISTAGEM DE PEDIDOS
+        // listar
         case "2":
 
-            console.log("--- LISTA DE PEDIDOS ---")
-
-            if (listaPedidos.length === 0) {
-                console.log("Nenhum pedido encontrado.")
+            if (listaPedidos.length == 0) {
+                console.log("Vazio")
             } else {
 
                 for (let i = 0; i < listaPedidos.length; i++) {
-                    let p = listaPedidos[i]
-
                     console.log(
-                        p.codigo + " | " +
-                        p.produto + " | " +
-                        p.prioridade
+                        listaPedidos[i].codigo + " - " +
+                        listaPedidos[i].produto + " - " +
+                        listaPedidos[i].prioridade
                     )
                 }
             }
@@ -92,7 +84,7 @@ while (menuAtivo) {
             break
 
 
-        //RESUMO GERENCIAL
+        // resumo
         case "3":
 
             totalItens = 0
@@ -102,52 +94,48 @@ while (menuAtivo) {
 
                 totalItens += listaPedidos[i].quantidade
 
-                if (listaPedidos[i].prioridade === "URGENTE") {
+                if (listaPedidos[i].prioridade == "URGENTE") {
                     urgentes++
                 }
             }
 
-            console.log("Total Pedidos: " + listaPedidos.length)
-            console.log("Soma Quantidades: " + totalItens)
-            console.log("Total Urgentes: " + urgentes)
+            console.log("Total: " + listaPedidos.length)
+            console.log("Quantidade: " + totalItens)
+            console.log("Urgentes: " + urgentes)
 
             break
 
 
-        //BUSCAR PEDIDOS
+        // buscar
         case "4":
 
-            termoBusca = prompt("Digite o código para buscar:")
+            termoBusca = prompt("Código:")
             achou = false
 
             for (let i = 0; i < listaPedidos.length; i++) {
 
-                if (listaPedidos[i].codigo === termoBusca) {
-                    console.log("Pedido encontrado:")
+                if (listaPedidos[i].codigo == termoBusca) {
                     console.log(listaPedidos[i])
                     achou = true
                     break
                 }
             }
 
-            if (!achou) {
-                console.log("Pedido não localizado.")
+            if (achou == false) {
+                console.log("Não achou")
             }
 
             break
 
 
-        //SAIR
+        // sair
         case "5":
-
-            console.log("Encerrando sistema...")
             menuAtivo = false
+            console.log("Saiu")
             break
 
-
-        //ERRO
         default:
-            console.log("Opção inválida!")
+            console.log("Erro")
             break
     }
 }
