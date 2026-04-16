@@ -1,3 +1,17 @@
+const prompt = require("prompt-sync")()
+
+// função pra pausar
+function pausa() {
+    prompt("\nenter pra continuar...")
+}
+
+// logo
+console.clear()
+console.log("===================================")
+console.log("      >>> SISTEMA PEDIDOS <<<      ")
+console.log("===================================")
+
+
 // variáveis
 let listaPedidos = []
 let menuAtivo = true
@@ -21,23 +35,35 @@ let achou
 // menu
 while (menuAtivo) {
 
-    opcao = prompt(
-        "1- Cadastrar\n" +
-        "2- Listar\n" +
-        "3- Resumo\n" +
-        "4- Buscar\n" +
-        "5- Sair"
-    )
+    console.log("\n----------------------")
+    console.log("1- cadastrar")
+    console.log("2- listar")
+    console.log("3- resumo")
+    console.log("4- buscar")
+    console.log("5- sair")
+    console.log("----------------------")
+
+    opcao = prompt("opcao: ").trim()
+
+    console.clear()
+
 
     switch (opcao) {
 
         case "1":
 
-            codigo = prompt("codigo")
-            produto = prompt("produto")
-            quantidade = parseInt(prompt("quantidade"))
-            setor = prompt("setor")
-            prazo = parseInt(prompt("prazo"))
+            console.log("=== cadastro ===")
+
+            codigo = prompt("codigo: ")
+            produto = prompt("produto: ")
+
+            quantidade = parseInt(prompt("quantidade: "))
+            if (isNaN(quantidade)) quantidade = 0
+
+            setor = prompt("setor: ")
+
+            prazo = parseInt(prompt("prazo: "))
+            if (isNaN(prazo)) prazo = 0
 
             if (prazo <= 2) {
                 prioridade = "URGENTE"
@@ -56,28 +82,36 @@ while (menuAtivo) {
                 prioridade
             })
 
-            console.log("ok")
+            console.log("\ncadastrado!")
+            pausa()
+            console.clear()
             break
 
 
         case "2":
+
+            console.log("=== lista ===")
 
             if (listaPedidos.length == 0) {
                 console.log("vazio")
             } else {
                 for (let i = 0; i < listaPedidos.length; i++) {
                     console.log(
-                        listaPedidos[i].codigo + " " +
-                        listaPedidos[i].produto + " " +
+                        listaPedidos[i].codigo + " - " +
+                        listaPedidos[i].produto + " - " +
                         listaPedidos[i].prioridade
                     )
                 }
             }
 
+            pausa()
+            console.clear()
             break
 
 
         case "3":
+
+            console.log("=== resumo ===")
 
             totalItens = 0
             urgentes = 0
@@ -95,12 +129,16 @@ while (menuAtivo) {
             console.log("qtd: " + totalItens)
             console.log("urgentes: " + urgentes)
 
+            pausa()
+            console.clear()
             break
 
 
         case "4":
 
-            termoBusca = prompt("codigo")
+            console.log("=== busca ===")
+
+            termoBusca = prompt("codigo: ")
             achou = false
 
             for (let i = 0; i < listaPedidos.length; i++) {
@@ -116,17 +154,21 @@ while (menuAtivo) {
                 console.log("nao achou")
             }
 
+            pausa()
+            console.clear()
             break
 
 
         case "5":
+            console.log("encerrando...")
             menuAtivo = false
-            console.log("fim")
             break
 
 
         default:
             console.log("erro")
+            pausa()
+            console.clear()
             break
     }
 }
