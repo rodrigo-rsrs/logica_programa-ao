@@ -1,5 +1,26 @@
 {
   "dependencies": {
+    "chalk": "^4.1.2",
     "prompt-sync": "^4.2.0"
-  }
+  },
+  "name": "logica_programa-ao",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ATIVIDADE01.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigo-rsrs/logica_programa-ao.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/rodrigo-rsrs/logica_programa-ao/issues"
+  },
+  "homepage": "https://github.com/rodrigo-rsrs/logica_programa-ao#readme"
 }
