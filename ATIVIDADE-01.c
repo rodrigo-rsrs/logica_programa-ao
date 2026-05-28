@@ -1,24 +1,20 @@
-include <stdio.h>
+#include <stdio.h>
 
 int main() {
-
-    char nome[100];
+    char nome[50];
     int idade;
-    char cidade[100];
-
-    printf("Digite seu nome completo: ");
-    fgets(nome, 100, stdin);
-
-    printf("Digite sua idade: ");
-    scanf("%d", &idade);
-
-    getchar();
-
-    printf("Digite sua cidade: ");
-    fgets(cidade, 100, stdin);
-
-    printf("\nOlá! Meu nome é %s", nome);
-    printf("Tenho %d anos e sou de %s", idade, cidade);
-
+    char cidade[50];
+    
+    printf("Infome seu nome: ");
+    scanf(" %[^\n]", nome);
+    
+    printf("Informe sua idade: ");
+    scanf(" %d", &idade);
+    
+    printf("Informe sua cidade: ");
+    scanf(" %[^\n]", cidade);
+    
+    printf("\nolá, meu nome é %s, tenho %d anos e sou de %s. \n ", nome,idade,cidade);
+    
     return 0;
 }
