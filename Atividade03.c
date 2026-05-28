@@ -1,18 +1,20 @@
 #include <stdio.h>
 
-int main(){
-
-    float c,f,k;
-
-    printf("Digite a temperatura em Celsius: ");
-    scanf("%f",&c);
-
-    f=c*1.8+32;
-    k=c+273.15;
-
-    printf("Celsius: %.2f\n",c);
-    printf("Fahrenheit: %.2f\n",f);
-    printf("Kelvin: %.2f\n",k);
-
+int main() {
+    
+    float celsius;
+    float fahrenheit;
+    float kelvin;
+    
+    printf("Informe a temperatura em celsius: ");
+    scanf("%f", &celsius);
+    
+    fahrenheit = celsius * 1.8 + 32;
+    kelvin = celsius + 273.15;
+    
+    printf("celsius: %2f\n", celsius);
+    printf("fahrenheit: %2f\n", fahrenheit);
+    printf("kelvin: %2f\n", kelvin);
+    
     return 0;
 }
